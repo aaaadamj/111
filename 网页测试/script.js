@@ -536,6 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 添加图片加载错误处理
     document.querySelectorAll('.slide').forEach(img => {
         img.onerror = function() {
+            console.error(`Failed to load image: ${img.src}`);
             this.style.display = 'none';
         };
     });
@@ -543,7 +544,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // 添加字体加载错误处理
     document.fonts.ready.then(function() {
         if (!document.fonts.check('1em HanyiSentyBrush')) {
+            console.warn('HanyiSentyBrush font not loaded, using fallback');
             document.body.style.setProperty('--fallback-font', '"KaiTi", "STKaiti", "楷体", cursive');
         }
     });
-}); 
+
+    // 检查图标
+    const iconElement = document.querySelector('.icon-doc');
+    if (iconElement) {
+        const computedStyle = window.getComputedStyle(iconElement);
+        if (computedStyle.backgroundImage === 'none') {
+            console.error('Doc icon not loaded');
+            iconElement.style.display = 'none';
+        }
+    }
+});
+
+// 添加资源检查函数
+function checkResources() {
+    // 检查图片
+    const images = document.querySelectorAll('.slide');
+    images.forEach(img => {
+        img.onerror = function() {
+            console.error(`Failed to load image: ${img.src}`);
+            this.style.display = 'none';
+        };
+    });
+
+    // 检查字体
+    document.fonts.ready.then(function() {
+        if (!document.fonts.check('1em HanyiSentyBrush')) {
+            console.warn('HanyiSentyBrush font not loaded, using fallback');
+            document.body.style.setProperty('--fallback-font', '"KaiTi", "STKaiti", "楷体", cursive');
+        }
+    });
+
+    // 检查图标
+    const iconElement = document.querySelector('.icon-doc');
+    if (iconElement) {
+        const computedStyle = window.getComputedStyle(iconElement);
+        if (computedStyle.backgroundImage === 'none') {
+            console.error('Doc icon not loaded');
+            iconElement.style.display = 'none';
+        }
+    }
+} 
