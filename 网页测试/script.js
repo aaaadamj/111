@@ -1,6 +1,6 @@
 // 添加 Deepseek API 配置
 const DEEPSEEK_API_KEY = 'sk-fd2626c8d2654f29acac4fc996136f83';
-const DEEPSEEK_API_URL = 'https://api.deepseek.ai/v1/chat/completions';
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 // 添加关键词映射表
 const keywordMappings = {
@@ -241,8 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-                        'Access-Control-Allow-Origin': '*'
                     },
+                    credentials: 'include',
                     body: JSON.stringify({
                         model: "deepseek-chat",
                         messages: [
@@ -532,4 +532,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 在DOM加载完成后初始化增强功能
     enhanceTextarea();
+
+    // 添加图片加载错误处理
+    document.querySelectorAll('.slide').forEach(img => {
+        img.onerror = function() {
+            this.style.display = 'none';
+        };
+    });
+
+    // 添加字体加载错误处理
+    document.fonts.ready.then(function() {
+        if (!document.fonts.check('1em HanyiSentyBrush')) {
+            document.body.style.setProperty('--fallback-font', '"KaiTi", "STKaiti", "楷体", cursive');
+        }
+    });
 }); 

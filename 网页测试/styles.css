@@ -40,7 +40,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('data:image/svg+xml,...'); /* 添加精致的背景图案 */
+    /* 移除或替换为实际的背景图案 */
     opacity: 0.1;
 }
 
@@ -170,6 +170,8 @@ textarea:focus {
 }
 
 .generate-btn {
+    border: none;
+    cursor: pointer;
     background: var(--gradient-blue);
     color: white;
     font-weight: 500;
