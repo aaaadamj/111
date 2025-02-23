@@ -103,7 +103,8 @@ body {
 }
 
 .main-title {
-    font-family: 'HanyiSentyBrush', 'KaiTi', 'STKaiti', '楷体', cursive;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 700;
     font-size: 48px;
     background: var(--gradient-gold);
     -webkit-background-clip: text;
@@ -207,13 +208,6 @@ textarea:focus {
     gap: 10px;
 }
 
-.icon-doc {
-    width: 24px;
-    height: 24px;
-    background: url('../assets/images/doc-icon.svg') no-repeat center;
-    display: inline-block;
-}
-
 .results-container {
     display: flex;
     flex-direction: column;
@@ -289,6 +283,11 @@ textarea:focus {
 
 .copy-btn:active {
     transform: translateY(1px);
+}
+
+.copy-btn i {
+    font-size: 14px;
+    margin-right: 4px;
 }
 
 .examples-section {

@@ -538,15 +538,9 @@ document.addEventListener('DOMContentLoaded', () => {
         img.onerror = function() {
             console.error(`Failed to load image: ${img.src}`);
             this.style.display = 'none';
+            // 添加备用背景色
+            this.parentElement.style.backgroundColor = 'var(--deep-blue)';
         };
-    });
-
-    // 添加字体加载错误处理
-    document.fonts.ready.then(function() {
-        if (!document.fonts.check('1em HanyiSentyBrush')) {
-            console.warn('HanyiSentyBrush font not loaded, using fallback');
-            document.body.style.setProperty('--fallback-font', '"KaiTi", "STKaiti", "楷体", cursive');
-        }
     });
 
     // 检查图标
@@ -569,14 +563,6 @@ function checkResources() {
             console.error(`Failed to load image: ${img.src}`);
             this.style.display = 'none';
         };
-    });
-
-    // 检查字体
-    document.fonts.ready.then(function() {
-        if (!document.fonts.check('1em HanyiSentyBrush')) {
-            console.warn('HanyiSentyBrush font not loaded, using fallback');
-            document.body.style.setProperty('--fallback-font', '"KaiTi", "STKaiti", "楷体", cursive');
-        }
     });
 
     // 检查图标
